@@ -1,0 +1,7 @@
+__title__ = "skribblio-auto-draw"
+__description__ = "Automatic image drawing into skribbl.io"
+__url__ = "https://github.com/Thosquey/skribblio-auto-draw"
+__version__ = "0.0.1"
+__author__ = "Clément Guibout"
+__author_email__ = "clement.guibout@gmail.com"
+__license__ = "GNU"
