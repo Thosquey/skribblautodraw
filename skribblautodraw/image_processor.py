@@ -1,9 +1,11 @@
 import re
+import sys
 import typing
 import urllib.error
 from urllib.request import urlopen
 
 import PIL
+import pyautogui
 from PIL import Image
 
 
@@ -15,11 +17,17 @@ def get_image(url: str) -> typing.Optional["PIL.Image"]:
         try:
             return Image.open(urlopen(url))
         except urllib.error.URLError:
-            print("Unexpected error while retrieving the image. Please verify provided URL.")
+            sys.exit("Unexpected error while retrieving the image. Please verify provided URL.")
     else:
-        print("Please provide a correct URL to image.")
+        sys.exit("Please provide a correct URL to image.")
 
 
-def create_representation(image: PIL.Image, quality: int = 2) -> typing.Optional[list]:
+def get_board_position() -> typing.Optional[list]:
+    if (position := pyautogui.locateOnScreen("assets/board.png", confidence=0.9)) is not None:
+        return position
+    else:
+        sys.exit("Drawing board has not been found on the screen. Please make sure than the entire board is visible.")
+
+
+def create_representation(image: PIL.Image, quality: int = 2, drawing_method: int = 0) -> typing.Optional[list]:
     pass
-
