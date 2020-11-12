@@ -26,7 +26,10 @@ def get_board_position() -> typing.Optional[list]:
     if (position := pyautogui.locateOnScreen("assets/board.png", confidence=0.9)) is not None:
         return position
     else:
-        sys.exit("Drawing board has not been found on the screen. Please make sure than the entire board is visible.")
+        sys.exit("Drawing board has not been found on the screen. Please make sure that:\n"
+                 "- the entire board is visible\n"
+                 "- the board is empty\n"
+                 "- the window has not been resized before or while drawing.")
 
 
 def create_representation(image: PIL.Image, quality: int = 2, drawing_method: int = 0) -> typing.Optional[list]:
